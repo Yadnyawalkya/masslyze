@@ -1,6 +1,6 @@
 # masslyze
 
-Small tool to analyse the XML output of sslyze in order to provide a n overview on mass SSL scans of IP ranges.
+Small tool to analyse the XML output of [sslyze](https://github.com/nabla-c0d3/sslyze) in order to provide an overview on mass SSL scans of IP ranges.
 
 ### Version
 0.1
@@ -15,7 +15,7 @@ Masslyze is designed for Windows use. Tested against Python >= 3.3 No dependenci
 ```sh
 $ python masslyze.py -a path_to_sslyze_XML_output.xml
 ```
-- Output in output.txt
+- Output in: output.txt
 
 ##### Scan & analyse:
 - Download files
@@ -26,5 +26,5 @@ $ python masslyze.py -a path_to_sslyze_XML_output.xml
 $ python masslyze.py -sa path_to_txt_file_with_targethosts.txt
 ```
 - wait until scan and analyse is finished
-- Output in output.txt
+- Output in: output.txt
 
