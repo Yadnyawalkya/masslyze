@@ -7,7 +7,7 @@ Small tool to analyse the XML output of sslyze in order to provide a n overview 
 
 ### Installation & Usage
 ##### Requirements:
-Masslyze is designed for Windows use. Tested against Python >= 3.3 No dependencies beside a compiled copy of [sslyze](https://github.com/nabla-c0d3/sslyze) in the same folder.
+Masslyze is designed for Windows use. Tested against Python >= 3.3 No dependencies beside a compiled copy of [sslyze](https://github.com/nabla-c0d3/sslyze) in the same folder (only needed for scans, not for analyse only).
 
 ##### Analyse only:
 - Download files
@@ -16,6 +16,7 @@ Masslyze is designed for Windows use. Tested against Python >= 3.3 No dependenci
 $ python masslyze.py -a path_to_sslyze_XML_output.xml
 ```
 - Output in output.txt
+
 ##### Scan & analyse:
 - Download files
 - add [compiled version of sslyze](https://github.com/nabla-c0d3/sslyze/releases) to same directory
