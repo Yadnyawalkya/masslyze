@@ -1,8 +1,7 @@
 
-def generate_output_by_vulns(db_cursor, db_connection, outputfile):
+def generate_output_by_vulns(db_cursor, outputfile):
     for vulnerability in ['sslv3', 'sslv2', 'CRIME', 'heartbleed', 'reneg', 'weakmediumcipher', 'rc4']:
         outputfile.write("\n+++++"+vulnerability+"+++++\n----------------------------------------\n")
-        #db_cursor.execute('''SELECT ip, hostname, port FROM hosts WHERE (?)=1''', (vulnerability,))
         db_cursor.execute("SELECT ip, hostname, port FROM hosts WHERE "+vulnerability+"=1")#, (vulnerability,))
         liste = db_cursor.fetchall()
         for i in liste:
@@ -26,7 +25,8 @@ def generate_output_by_vulns(db_cursor, db_connection, outputfile):
         outputfile.write(out_str)
     outputfile.write("\n")
 
-def attach_invalidtargets_to_output(db_cursor, db_connection, outputfile):
+
+def attach_invalidtargets_to_output(db_cursor, outputfile):
     outputfile.write("\n\n\nInvalid targets:\n----------------------------------------\n")
     db_cursor.execute("SELECT name FROM invalidtargets")
     liste = db_cursor.fetchall()
