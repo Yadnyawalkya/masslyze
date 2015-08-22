@@ -2,17 +2,13 @@ import os
 import sqlite3
 
 
-def cleanup_temp_files_u_db():
+def cleanup_temp_files_u_db(DEBUG=False):
     if os.path.isfile('work.db'):
         os.remove('work.db')
-    '''
-    if os.path.isfile('output.txt'):
-        os.remove('output.txt')
-    '''
-    '''
-    if os.path.isfile('ergebnis.xml'):
-        os.remove('ergebnis.xml')
-    '''
+    if DEBUG == False:
+        if os.path.isfile('ergebnis.xml'):
+            os.remove('ergebnis.xml')
+
 
 
 def init_new_db():

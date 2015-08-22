@@ -14,6 +14,7 @@ import sys
 
 # TODO:
 # *remove commandline output from the scan call
+DEBUG = True
 
 
 def execute_scan(target_file):
@@ -22,8 +23,6 @@ def execute_scan(target_file):
 
 
 def parse_xml(xml_file):
-    # init the database
-    helper_functions.cleanup_temp_files_u_db()
     db_cursor, db_connection = helper_functions.init_new_db()
     # read/parse the xml file
     tree = etree.parse(xml_file)
@@ -86,24 +85,24 @@ def generate_outputfile():
     with open('output.txt', 'w') as outputfile:
         outputfile.write("Vulnerabilities sorted by Vulnerabilities:\n\n")
         output_generation.generate_output_by_vulns(db_cursor, outputfile)
-
         output_generation.attach_invalidtargets_to_output(db_cursor, outputfile)
     db_connection.close()
 
 
 if __name__ == "__main__":
-
     if len(sys.argv) == 0:
         helper_functions.print_help()
     elif len(sys.argv) == 3 and sys.argv[1] == "-a":
         parse_xml(sys.argv[2])
         generate_outputfile()
+        helper_functions.cleanup_temp_files_u_db(DEBUG)
         print("Done. Result in: output.txt")
     elif len(sys.argv) == 3 and sys.argv[1] == "-sa":
         print("The scan may take some time, be patient. Scanning...")
         execute_scan(sys.argv[2])
         parse_xml('ergebnis.xml')
         generate_outputfile()
+        helper_functions.cleanup_temp_files_u_db(DEBUG)
         print("Done. Result in: output.txt")
     else:
         helper_functions.print_help()
