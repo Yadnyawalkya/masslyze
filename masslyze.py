@@ -5,15 +5,15 @@ from functions import helper_functions
 from functions import output_generation
 import sys
 
-# folgende Schachstellen bedacht:
-# * certificate sachen nur im leaf certificate
+# folgende Schwachstellen bedacht:
+# * certificate issues only in the leaf certificate
 # sslv3, sslv2, CRIME, heartbleed, client-init. reneg, certificate (hostname, trust, keysize, date,
 # weak public key signature algorithm), rc4, weak/medium cipher
 #
-# fehlt: renego-isSecure
+# missing: renego-isSecure
 
 # TODO:
-# *remove commandline output from the scan call
+
 DEBUG = True
 
 
