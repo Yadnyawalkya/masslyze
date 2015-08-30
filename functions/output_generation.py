@@ -2,7 +2,7 @@
 def generate_output_by_vulns(db_cursor, outputfile):
     for vulnerability in ['sslv3', 'sslv2', 'CRIME', 'heartbleed', 'reneg', 'weakmediumcipher', 'rc4']:
         outputfile.write("\n+++++"+vulnerability+"+++++\n----------------------------------------\n")
-        db_cursor.execute("SELECT ip, hostname, port FROM hosts WHERE "+vulnerability+"=1")#, (vulnerability,))
+        db_cursor.execute("SELECT ip, hostname, port FROM hosts WHERE "+vulnerability+"=1")
         liste = db_cursor.fetchall()
         for i in liste:
             out_str = i[0] + ":" + i[2] + " (" + i[1] + ")\n"
