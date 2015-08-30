@@ -18,7 +18,7 @@ DEBUG = True
 
 
 def execute_scan(target_file):
-    scan_query = "sslyze-0_11-windows\sslyze.exe --regular --targets_in " + target_file + " --xml_out ergebnis.xml --timeout=10 --quiet"
+    scan_query = "sslyze\sslyze.exe --regular --targets_in " + target_file + " --xml_out ergebnis.xml --timeout=10 --quiet"
     call(scan_query, shell=False, stdout=None, stderr=None)
 
 
