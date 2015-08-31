@@ -17,6 +17,18 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# PyCharm files
+.idea
+
+# Python
+__pycache__
+
+# Project related
+sslyze
+testcases
+venv
+
+
 # =========================
 # Operating System Files
 # =========================
