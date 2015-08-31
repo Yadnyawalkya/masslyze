@@ -5,14 +5,15 @@ from functions import helper_functions
 from functions import output_generation
 import sys
 
-# folgende Schwachstellen bedacht:
-# * certificate issues only in the leaf certificate
-# sslv3, sslv2, CRIME, heartbleed, client-init. reneg, certificate (hostname, trust, keysize, date,
-# weak public key signature algorithm), rc4, weak/medium cipher
+# detects the following vulnerability classes:
+# (certificate issues only in the leaf certificate)
+# SSLv3, SSLv2, CRIME, Heartbleed, client-init. Renegotiation, Certificate issues (hostname, trust, keysize, date,
+# weak public key signature algorithm), RC4 Cipher support, weak/medium cipher in use
 #
-# missing: renego-isSecure
-
+#
 # TODO:
+# implement: secure Renegotiation
+# add: output sorted by hosts
 
 DEBUG = True
 
