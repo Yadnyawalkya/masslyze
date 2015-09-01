@@ -10,10 +10,9 @@ import sys
 # SSLv3, SSLv2, CRIME, Heartbleed, client-init. Renegotiation, Certificate issues (hostname, trust, keysize, date,
 # weak public key signature algorithm), RC4 Cipher support, weak/medium cipher in use
 #
-#
 # TODO:
 # implement: secure Renegotiation
-# add: output sorted by hosts
+
 
 DEBUG = True
 
