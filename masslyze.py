@@ -84,20 +84,24 @@ def parse_xml(xml_file):
 def generate_outputfile():
     db_cursor, db_connection = helper_functions.connect_to_db()
     with open('output.txt', 'w') as outputfile:
-        outputfile.write("Vulnerabilities sorted by Vulnerabilities:\n\n")
         output_generation.generate_output_by_vulns(db_cursor, outputfile)
         output_generation.attach_invalidtargets_to_output(db_cursor, outputfile)
+    with open('output_sorted_by_hosts.txt', 'w') as outputfile2:
+        output_generation.generate_output_by_hosts(db_cursor, outputfile2)
+        output_generation.attach_invalidtargets_to_output(db_cursor, outputfile2)
     db_connection.close()
 
 
 if __name__ == "__main__":
     if len(sys.argv) == 0:
         helper_functions.print_help()
+    # analyse only
     elif len(sys.argv) == 3 and sys.argv[1] == "-a":
         parse_xml(sys.argv[2])
         generate_outputfile()
         helper_functions.cleanup_temp_files_u_db(DEBUG)
         print("Done. Result in: output.txt")
+    # scan and analyse
     elif len(sys.argv) == 3 and sys.argv[1] == "-sa":
         print("The scan may take some time, be patient. Scanning...")
         execute_scan(sys.argv[2])
@@ -107,3 +111,4 @@ if __name__ == "__main__":
         print("Done. Result in: output.txt")
     else:
         helper_functions.print_help()
+
