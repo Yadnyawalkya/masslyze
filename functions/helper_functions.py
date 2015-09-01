@@ -10,7 +10,6 @@ def cleanup_temp_files_u_db(DEBUG=False):
             os.remove('ergebnis.xml')
 
 
-
 def init_new_db():
     conn = sqlite3.connect('work.db')
     c = conn.cursor()

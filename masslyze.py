@@ -99,7 +99,7 @@ if __name__ == "__main__":
         parse_xml(sys.argv[2])
         generate_outputfile()
         helper_functions.cleanup_temp_files_u_db(DEBUG)
-        print("Done. Result in: output.txt")
+        print("Done. Result in: output.txt and output_sorted_by_hosts.txt")
     # scan and analyse
     elif len(sys.argv) == 3 and sys.argv[1] == "-sa":
         print("The scan may take some time, be patient. Scanning...")
@@ -107,7 +107,6 @@ if __name__ == "__main__":
         parse_xml('ergebnis.xml')
         generate_outputfile()
         helper_functions.cleanup_temp_files_u_db(DEBUG)
-        print("Done. Result in: output.txt")
+        print("Done. Result in: output.txt and output_sorted_by_hosts.txt")
     else:
         helper_functions.print_help()
-
