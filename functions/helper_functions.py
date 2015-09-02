@@ -5,9 +5,8 @@ import sqlite3
 def cleanup_temp_files_u_db(DEBUG=False):
     if os.path.isfile('work.db'):
         os.remove('work.db')
-    if DEBUG == False:
-        if os.path.isfile('ergebnis.xml'):
-            os.remove('ergebnis.xml')
+    if DEBUG == False and os.path.isfile('ergebnis.xml'):
+        os.remove('ergebnis.xml')
 
 
 def init_new_db():
