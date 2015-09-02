@@ -64,7 +64,7 @@ def parse_xml(xml_file):
                     vulnerability_checks.check_for_reneg(db_cursor, host_ip, host_port, vulnerability)
                 # certificate
                 if vulnerability.tag == "certinfo":
-                    vulnerability_checks.check_for_certificate(db_cursor, host_ip, host_port, vulnerability)
+                    vulnerability_checks.check_for_certificate(db_cursor, host_name, host_ip, host_port, vulnerability)
                 #  weak/medium keysize cipher support
                 if vulnerability.tag == "sslv3" or "tlsv1" or "tlsv1_1" or "tlsv1_2":
                     vulnerability_checks.check_for_weakmedium_cipher_keysize(db_cursor, host_ip, host_port, vulnerability)
@@ -75,7 +75,7 @@ def parse_xml(xml_file):
         except:
             db_connection.rollback()
             db_cursor.execute('''UPDATE hosts SET certificate=? WHERE ip=? AND port=?''', ('', host_ip, host_port))
-            db_cursor.execute('''UPDATE hosts SET info=? WHERE ip=? AND port=?''', ("Error while parsing XML of this host. Use the following command to manually scan and analyse the host: sslyze --regular "+host_ip+":"+host_port, host_ip, host_port))
+            db_cursor.execute('''UPDATE hosts SET info=? WHERE ip=? AND port=?''', ("Error while parsing XML of this host. Use the following command to manually scan and analyse the host: sslyze --regular {}:{}".format(host_name, host_port), host_ip, host_port))
             db_connection.commit()
     db_connection.close()
 
