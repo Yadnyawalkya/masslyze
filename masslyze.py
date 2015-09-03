@@ -65,7 +65,7 @@ def parse_xml(xml_file):
                 # certificate
                 if vulnerability.tag == "certinfo":
                     vulnerability_checks.check_for_certificate(db_cursor, host_name, host_ip, host_port, vulnerability)
-                #  weak/medium keysize cipher support
+                # weak/medium keysize cipher support
                 if vulnerability.tag == "sslv3" or "tlsv1" or "tlsv1_1" or "tlsv1_2":
                     vulnerability_checks.check_for_weakmedium_cipher_keysize(db_cursor, host_ip, host_port, vulnerability)
                 # rc4 supported
